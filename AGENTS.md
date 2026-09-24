@@ -1,3 +1,15 @@
+# Testing policy
+
+- Never write unit tests after writing the implementation code.
+- Highly prefer end-to-end (E2E) tests as the sole testing mechanism. Use them to verify complex features through the real user or system path.
+- Choose a realistic medium-to-hard scenario for E2E verification, including meaningful failure or recovery behavior; the simplest happy path alone is insufficient.
+- Every E2E run must produce a verifiable, repeatable artifact: record the command, relevant inputs or fixtures, and assertions/results, with a trace, result bundle, recording, or equivalent evidence appropriate to the system.
+- If a system must be tested in isolation, first write down its failure modes, then write the failing tests, then write the implementation code.
+- Do not add low-signal tests that merely echo constants, repeat implementation details, or assert substrings of fixed text. Retain isolated tests only when they catch a concrete bug that E2E coverage would miss; identify that failure mode.
+- When cleaning up existing tests, compare against actual E2E coverage before deleting them. Preserve unique regression, boundary, and failure-path coverage; do not assume an E2E suite covers behavior it does not exercise.
+
+This policy governs test selection and authoring wherever older guidance below or linked from this file differs. Continue running relevant existing checks and preserve test-state isolation and live-system boundaries.
+
 # Hermes Agent - Development Guide
 
 Instructions for AI coding assistants and developers working on the hermes-agent codebase.
